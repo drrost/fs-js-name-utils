@@ -1,37 +1,58 @@
 export const NameUtils = {
-    fullName: (person) => {
-        let result = '';
-        if (person.lastName) {
-            result += person.lastName;
-        }
-        if (person.firstName) {
-            if (result) {
-                result += ' ';
-            }
-            result += person.firstName;
-        }
-        if (person.fathersName) {
-            if (result) {
-                result += ' ';
-            }
-            result += person.fathersName;
-        }
-        return result;
-    },
-
-    shortName: (fullName) => {
+    short: (fullName) => {
         if (!fullName) {
             return fullName;
         }
+        if (!fullName.trim()) {
+            return fullName;
+        }
+
         const parts = fullName.split(' ');
-        if (parts.length === 1) {
-            return parts[0];
+
+        if (parts.length < 2) {
+            return fullName;
         }
-        if (parts.length === 2) {
-            return parts[0] + ' ' + parts[1].charAt(0).toUpperCase() + '.';
+
+        let result = '';
+        if (parts.length > 1) {
+            result += parts[0] + ' ' + parts[1].charAt(0) + '.';
         }
-        return parts[0] + ' '
-            + parts[1].charAt(0).toUpperCase() + '.'
-            + parts[2].charAt(0).toUpperCase() + '.';
+
+        if (parts.length > 2) {
+            result += parts[2].charAt(0) + '.';
+        }
+
+        return result;
+    },
+
+    splitFullName: (fullName) => {
+        if (!fullName) {
+            return fullName;
+        }
+
+        return fullName.split(' ');
+    },
+
+    fullName: (patient) => {
+        if (!patient) {
+            return patient;
+        }
+        let result = '';
+        if (patient.lastName) {
+            result += patient.lastName;
+        }
+        if (patient.firstName) {
+            if (result) {
+                result += ' ';
+            }
+            result += patient.firstName;
+        }
+        if (patient.fathersName) {
+            if (result) {
+                result += ' ';
+            }
+            result += patient.fathersName;
+        }
+        return result;
     }
 }
