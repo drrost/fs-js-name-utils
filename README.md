@@ -1,7 +1,23 @@
-Run 
+## To run in development
 
-```shell
-./deploy
+```bash
+npm run dev
 ```
 
-to deploy the package.
+## To run tests
+
+```bash
+npm test
+```
+
+or
+
+```bash
+npm run watch
+```
+
+## To build and publish
+
+```bash
+./deploy
+```
